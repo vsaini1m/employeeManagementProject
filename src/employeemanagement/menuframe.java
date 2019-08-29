@@ -51,7 +51,7 @@ public class menuframe extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton.setIcon(new ImageIcon("C:\\Users\\kaal\\Desktop\\eimg\\00mm.png"));
+		btnNewButton.setIcon(new ImageIcon("E:\\Eclipse_prjects2\\employeemanagement\\eimg\\00mm.png"));
 		btnNewButton.setBounds(0, 0, 282, 234);
 		contentPane.add(btnNewButton);
 		
@@ -63,21 +63,32 @@ public class menuframe extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\kaal\\Desktop\\eimg\\Untitled-1.png"));
+		btnNewButton_1.setIcon(new ImageIcon("E:\\Eclipse_prjects2\\employeemanagement\\eimg\\Untitled-1.png"));
 		btnNewButton_1.setBounds(280, 0, 322, 234);
 		contentPane.add(btnNewButton_1);
 		
 		JButton button = new JButton("");
-		button.setIcon(new ImageIcon("C:\\Users\\kaal\\Desktop\\eimg\\data.png"));
+		button.setIcon(new ImageIcon("E:\\Eclipse_prjects2\\employeemanagement\\eimg\\data.png"));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				showdata s=new showdata();
+				s.setVisible(true);
 			}
 		});
 		button.setBounds(0, 234, 282, 234);
 		contentPane.add(button);
 		
 		JButton button_1 = new JButton("");
-		button_1.setIcon(new ImageIcon("C:\\Users\\kaal\\Desktop\\eimg\\change.png"));
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				change c=new change();
+				c.setVisible(true);
+				
+			}
+		});
+		button_1.setIcon(new ImageIcon("E:\\Eclipse_prjects2\\employeemanagement\\eimg\\change.png"));
 		button_1.setBounds(280, 234, 322, 234);
 		contentPane.add(button_1);
 	}

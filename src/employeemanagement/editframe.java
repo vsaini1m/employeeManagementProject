@@ -17,6 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
+import java.awt.SystemColor;
+import javax.swing.ImageIcon;
 
 public class editframe extends JFrame {
 
@@ -46,6 +48,7 @@ public class editframe extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1132, 644);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(64, 224, 208));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -56,62 +59,63 @@ public class editframe extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		textField = new JTextField();
-		textField.setBounds(884, 17, 143, 20);
+		textField.setBounds(825, 10, 157, 34);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JButton btnSearch = new JButton("Search");
+		btnSearch.setIcon(new ImageIcon("E:\\Eclipse_prjects2\\employeemanagement\\eimg\\search.png"));
 	
-		btnSearch.setBounds(1023, 16, 89, 23);
+		btnSearch.setBounds(982, 9, 130, 36);
 		contentPane.add(btnSearch);
 		
 		JLabel lblEnterId = new JLabel("Enter id");
-		lblEnterId.setBounds(884, 0, 48, 14);
+		lblEnterId.setBounds(857, 55, 48, 14);
 		contentPane.add(lblEnterId);
 		
-		JTextField lblNewLabel_1 = new JTextField("ID");
+		JTextField lblNewLabel_1 = new JTextField("");
 		lblNewLabel_1.setForeground(Color.MAGENTA);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_1.setBounds(10, 113, 264, 27);
 		contentPane.add(lblNewLabel_1);
 		
-		JTextField lblNewLabel_2 = new JTextField("First Name");
+		JTextField lblNewLabel_2 = new JTextField("");
 		lblNewLabel_2.setForeground(Color.MAGENTA);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_2.setBounds(10, 236, 264, 25);
 		contentPane.add(lblNewLabel_2);
 		
-		JTextField lblNewLabel_3 = new JTextField("Last Name");
+		JTextField lblNewLabel_3 = new JTextField("");
 		lblNewLabel_3.setForeground(Color.MAGENTA);
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_3.setBounds(10, 352, 264, 27);
 		contentPane.add(lblNewLabel_3);
 		
-		JTextField lblNewLabel_4 = new JTextField("Email Id");
+		JTextField lblNewLabel_4 = new JTextField("");
 		lblNewLabel_4.setForeground(Color.MAGENTA);
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_4.setBounds(10, 465, 264, 27);
 		contentPane.add(lblNewLabel_4);
 		
-		JTextField lblNewLabel_5 = new JTextField("Countery");
+		JTextField lblNewLabel_5 = new JTextField("");
 		lblNewLabel_5.setForeground(Color.MAGENTA);
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_5.setBounds(418, 465, 261, 27);
 		contentPane.add(lblNewLabel_5);
 		
-		JTextField lblNewLabel_6 = new JTextField("Age");
+		JTextField lblNewLabel_6 = new JTextField("");
 		lblNewLabel_6.setForeground(Color.MAGENTA);
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_6.setBounds(418, 113, 261, 27);
 		contentPane.add(lblNewLabel_6);
 		
-		JTextField lblNewLabel_7 = new JTextField("Mobile No.");
+		JTextField lblNewLabel_7 = new JTextField("");
 		lblNewLabel_7.setForeground(Color.MAGENTA);
 		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_7.setBounds(418, 223, 261, 27);
+		lblNewLabel_7.setBounds(418, 235, 261, 27);
 		contentPane.add(lblNewLabel_7);
 		
-		JTextField label = new JTextField("Position");
+		JTextField label = new JTextField("");
 		label.setForeground(Color.MAGENTA);
 		label.setFont(new Font("Tahoma", Font.BOLD, 13));
 		label.setBounds(418, 352, 261, 27);
@@ -136,22 +140,16 @@ public class editframe extends JFrame {
 				
 				
 			try {
+
+				String sql="Update emp set id='"+lblNewLabel_1.getText()+"',first='"+lblNewLabel_2.getText()+"',last='"+lblNewLabel_3.getText()+"',email='"+lblNewLabel_4.getText()+"',age='"+lblNewLabel_6.getText()+"',mobile='"+lblNewLabel_7.getText()+"',position='"+label.getText()+"',country='"+lblNewLabel_5.getText()+"' where id='"+textField.getText()+"' ";
+				
 				Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/employee", "root","root");
-				PreparedStatement st=con.prepareStatement("Update emp values(?,?,?,?,?,?,?,?)Where id='"+(textField.getText()) );
 				
-				st.setInt(1, ii);
-				st.setString(2, firstname);
-				st.setString(3, lastname);
-				st.setString(4, emailid);
-				st.setString(5, agee);
-				st.setString(6, mobilee);
-				st.setString(7, positionn);
-				st.setString(8, counteryy);
+				PreparedStatement st=con.prepareStatement(sql);
 				
-				int count=st.executeUpdate();
-				
-				
-	//			ResultSet rs=st.executeQuery("Update emp set id='"+ii+"','"+firstname+"','"+lastname+"','"+emailid+"','"+agee+"','"+mobilee+"','"+positionn+"','"+counteryy);
+				st.execute();
+								
+
 				JOptionPane.showMessageDialog(null, "Data Updated");
 	
 			
@@ -197,6 +195,46 @@ public class editframe extends JFrame {
 		btnNewButton_1.setBounds(967, 379, 79, 36);
 		contentPane.add(btnNewButton_1);
 		
+		JLabel lblId = new JLabel("Id");
+		lblId.setFont(new Font("Trajan Pro", Font.PLAIN, 14));
+		lblId.setBounds(97, 74, 89, 27);
+		contentPane.add(lblId);
+		
+		JLabel lblFirstName = new JLabel("First name");
+		lblFirstName.setFont(new Font("Trajan Pro", Font.PLAIN, 14));
+		lblFirstName.setBounds(88, 198, 117, 27);
+		contentPane.add(lblFirstName);
+		
+		JLabel lblLastName = new JLabel("Last Name");
+		lblLastName.setFont(new Font("Trajan Pro", Font.PLAIN, 14));
+		lblLastName.setBounds(88, 314, 117, 27);
+		contentPane.add(lblLastName);
+		
+		JLabel lblEmailId = new JLabel("Email id");
+		lblEmailId.setFont(new Font("Trajan Pro", Font.PLAIN, 14));
+		lblEmailId.setBounds(88, 427, 117, 27);
+		contentPane.add(lblEmailId);
+		
+		JLabel lblAge = new JLabel("Age");
+		lblAge.setFont(new Font("Trajan Pro", Font.PLAIN, 14));
+		lblAge.setBounds(453, 74, 72, 27);
+		contentPane.add(lblAge);
+		
+		JLabel lblMobile = new JLabel("Mobile");
+		lblMobile.setFont(new Font("Trajan Pro", Font.PLAIN, 14));
+		lblMobile.setBounds(453, 198, 89, 27);
+		contentPane.add(lblMobile);
+		
+		JLabel lblPosition = new JLabel("Occupation");
+		lblPosition.setFont(new Font("Trajan Pro", Font.PLAIN, 14));
+		lblPosition.setBounds(453, 314, 143, 27);
+		contentPane.add(lblPosition);
+		
+		JLabel lblCountery = new JLabel("Countery");
+		lblCountery.setFont(new Font("Trajan Pro", Font.PLAIN, 14));
+		lblCountery.setBounds(453, 434, 127, 20);
+		contentPane.add(lblCountery);
+		
 		
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -220,10 +258,11 @@ public class editframe extends JFrame {
 					lblNewLabel_2.setText(b);
 					lblNewLabel_3.setText(c);
 					lblNewLabel_4.setText(d);
-					lblNewLabel_5.setText(ee);
-					lblNewLabel_6.setText(f);
-					lblNewLabel_7.setText(g);
-					label.setText(h);
+					lblNewLabel_6.setText(ee);
+					lblNewLabel_7.setText(f);
+					label.setText(g);
+					lblNewLabel_5.setText(h);
+					//label.setText(h);
 					//lblNewLabel_9.setText();
 					
 					

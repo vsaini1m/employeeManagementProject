@@ -62,7 +62,7 @@ public class login {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon("C:\\Users\\kaal\\Desktop\\eimg\\user.png"));
+		label.setIcon(new ImageIcon("E:\\Eclipse_prjects2\\employeemanagement\\eimg\\user.png"));
 		label.setBounds(220, 11, 224, 155);
 		frame.getContentPane().add(label);
 		
@@ -90,7 +90,11 @@ public class login {
 					String user=rs.getString(1);
 					String password=rs.getString(2);
 					
-					if(u.equals(user)&&p.equals(password)) {
+					rs.next();
+					String userhid=rs.getString(1);
+					String userhide=rs.getString(2);
+					
+					if(u.equals(user)&&p.equals(password)||u.equals(userhid)&&p.equals(userhide)) {
 						menuframe m=new menuframe();
 						
 						m.setVisible(true);
